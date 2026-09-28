@@ -20,7 +20,8 @@ The supported public workflow is **single-image inspection on CPU**. Historical 
 
 | Property | Recorded value |
 |---|---|
-| Original local artifact | `yolov11n_best.pt` |
+| Original local copy | `yolov11n_best.pt` |
+| Verified Drive run artifact | `fire_detection_yolo11/weights/best.pt` |
 | Application location | `models/fire-smoke.pt` or `SKYGUARD_MODEL` |
 | Observed classes | `fire`, `smoke` |
 | File size | 5,447,507 bytes |
@@ -31,21 +32,9 @@ The checkpoint hash and byte size exactly match the historical `fire_detection_y
 
 **Weights and sample images are not tracked.** The original local development environment included a model/sample; a fresh GitHub clone requires an authorized compatible checkpoint and your own image. The application never silently downloads or substitutes an unrelated detector.
 
-### Historical local dataset artifact
+### Other historical datasets
 
-A separate local Roboflow export is labeled **J.A.M. Busqueda – Prototype 1**. Its bundled metadata records an export on June 15, 2025, a CC BY 4.0 license, 13,941 images, auto-orientation, stretching to 640×640, and augmentation using 90-degree rotations. These are statements from the local export metadata, not an independently audited upstream manifest.
-
-Its YAML names **fire, human, object and vehicle**. That is different from the served **fire/smoke** checkpoint. It is therefore documented as historical research data, **not asserted to be the served checkpoint's training dataset**.
-
-Read-only inventory of the local export:
-
-| Split | Image files (JPEG/PNG/WebP) | Label text files |
-|---|---:|---:|
-| Train | 10,790 | 12,835 |
-| Validation | 1,331 | 1,331 |
-| Test | 670 | 670 |
-
-Cache arrays were excluded. Current image totals differ from export metadata; training image/label counts also differ. These must be reconciled before claiming a reproducible training run. No historical images or labels are republished here.
+Separate experiments used other datasets, including the four-class **J.A.M. Busqueda – Prototype 1** dataset (`fire`, `human`, `object`, `vehicle`). Those experiments are not the source of the served fire/smoke checkpoint and their metrics are not presented as current model performance. See [Training history](docs/TRAINING_HISTORY.md) for the separation between runs.
 
 ### Data expected for a new training run
 
