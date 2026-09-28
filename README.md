@@ -233,8 +233,4 @@ tests/                  API tests
 .github/workflows/      Lightweight CI
 ```
 
-## Next work and limitations
 
-Establish checkpoint/data lineage, reconcile the historical export, evaluate hard negatives and domain shift, measure per-class precision/recall across thresholds, inspect overlapping detections, and record CPU latency distributions. Streaming, hardware integration and public hosting protections require separate validation.
-
-[Engineering decisions and demo](docs/ENGINEERING.md) · [Provenance and AI assistance](docs/PROVENANCE.md). Dependencies and artifacts retain their applicable licenses; no new redistribution license is assigned to model weights.
