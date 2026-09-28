@@ -29,9 +29,9 @@ The supported public workflow is **single-image inspection on CPU**. Historical 
 
 The checkpoint is an existing research artifact. A complete training manifest, split history and benchmark evaluation have not been conclusively linked to it. Its local filename alone does not verify all training details. See [MODEL_CARD.md](docs/MODEL_CARD.md).
 
-**Weights and sample images are not tracked.** The prepared desktop copy includes a local model/sample; a fresh GitHub clone requires an authorized compatible checkpoint and your own image. The application never silently downloads or substitutes an unrelated detector.
+**Weights and sample images are not tracked.** The original local development environment included a model/sample; a fresh GitHub clone requires an authorized compatible checkpoint and your own image. The application never silently downloads or substitutes an unrelated detector.
 
-### Historical dataset in the research folder
+### Historical local dataset artifact
 
 A separate local Roboflow export is labeled **J.A.M. Busqueda – Prototype 1**. Its bundled metadata records an export on June 15, 2025, a CC BY 4.0 license, 13,941 images, auto-orientation, stretching to 640×640, and augmentation using 90-degree rotations. These are statements from the local export metadata, not an independently audited upstream manifest.
 
