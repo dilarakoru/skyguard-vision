@@ -60,12 +60,19 @@ def invalid_yolo_rows(path: Path) -> int:
             invalid += 1
             continue
         try:
-            class_id = int(float(parts[0]))
+            class_value = float(parts[0])
             x, y, width, height = map(float, parts[1:])
         except ValueError:
             invalid += 1
             continue
-        if class_id < 0 or not all(0.0 <= value <= 1.0 for value in (x, y, width, height)):
+        if (
+            not class_value.is_integer()
+            or class_value < 0
+            or not 0.0 <= x <= 1.0
+            or not 0.0 <= y <= 1.0
+            or not 0.0 < width <= 1.0
+            or not 0.0 < height <= 1.0
+        ):
             invalid += 1
     return invalid
 
