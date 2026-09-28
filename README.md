@@ -205,6 +205,8 @@ Historical notebooks and training artifacts record:
 
 These historical experiments are separate from the checkpoint served by the current application. See [Training history](docs/TRAINING_HISTORY.md) for the documented experiment context.
 
+Clean public versions of the historical GPU-training and dataset-QA utilities are available under [research/](research/).
+
 ## Training
 
 Training is explicit and separate from application startup:
