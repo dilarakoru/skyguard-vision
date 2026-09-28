@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/dilarakoru/skyguard-vision/actions/workflows/ci.yml/badge.svg)](https://github.com/dilarakoru/skyguard-vision/actions/workflows/ci.yml)
 
-A CPU-first fire/smoke image-inspection application built with **Ultralytics YOLO, FastAPI and Pillow**. Upload an image, choose a confidence threshold, inspect labeled boxes and export the annotated result through a browser or CLI.
+A fire/smoke detection project built with **Ultralytics YOLO, PyTorch, FastAPI and Pillow**. The public application provides a reproducible CPU inference workflow, while the broader project history includes CUDA-enabled GPU training, model experimentation and Raspberry Pi edge testing.
 
 ![SkyGuard image inspection](docs/preview.png)
 
@@ -12,7 +12,7 @@ A CPU-first fire/smoke image-inspection application built with **Ultralytics YOL
 
 The project turns existing detection scripts and a research checkpoint into one inspectable application. Browser and CLI share preprocessing and inference, so input handling and thresholds remain consistent. Missing models are distinguished from successful inference with no detections.
 
-The supported workflow is **single-image inspection on CPU**. Live monitoring, geolocation, Raspberry Pi integration, emergency alerting and field reliability are not demonstrated by this repository.
+The supported public workflow is **single-image inspection on CPU**. Historical project work also included GPU training and Raspberry Pi edge-inference tests, but live monitoring, geolocation, emergency alerting and field reliability are not demonstrated by the current repository.
 
 ## Data and model provenance
 
@@ -190,6 +190,21 @@ Send **raw bytes, not multipart form data**. Response fields are `detections`, `
 
 Unexpected runtime failures are not represented as successful empty results.
 
+## Hardware and development history
+
+The current application defaults to CPU inference for straightforward local reproduction, but the model-development work was not CPU-only.
+
+Historical notebooks and training artifacts record:
+
+- CUDA-enabled training on **NVIDIA A100-SXM4-40GB** and **Tesla T4** GPUs.
+- Experiments across **YOLO11n, YOLO11m, YOLO11l and YOLOv12L** configurations.
+- 640×640 training runs with mixed-precision (`amp`) enabled.
+- Transfer/retraining experiments and saved training artifacts such as result CSVs, confusion matrices, PR/F1 curves and model weights.
+- Dataset-quality checks for missing labels, corrupted images and image/annotation consistency.
+- Raspberry Pi-based edge-inference testing during the original project work.
+
+These historical experiments are separate from the checkpoint served by the current application. See [Training history](docs/TRAINING_HISTORY.md) for the documented experiment context.
+
 ## Training
 
 Training is explicit and separate from application startup:
@@ -198,7 +213,7 @@ Training is explicit and separate from application startup:
 python train.py --data path/to/data.yaml --weights path/to/start.pt --epochs 30 --batch 4 --device cpu
 ```
 
-Both files must exist locally. Image size is 640; outputs go under `runs/`. Supplied weights are not overwritten. Use `--device 0` only on a configured CUDA machine. No retraining run is claimed for portfolio preparation. A new model release should preserve dataset/split manifests, arguments, versions and an independent evaluation.
+Both files must exist locally. Image size is 640; outputs go under `runs/`. Supplied weights are not overwritten. Use `--device 0` on a configured CUDA machine. A new model release should preserve dataset/split manifests, arguments, versions and an independent evaluation.
 
 ## Tests
 
@@ -226,7 +241,7 @@ detector.py             Shared preprocessing and CPU inference
 predict.py              CLI and JPEG/JSON outputs
 train.py                Separate training command
 templates/index.html    Browser UI
-docs/                   Model card, result, decisions and provenance
+docs/                   Model card, inference evidence and training history
 models/                 Local ignored weights
 runs/                   Ignored generated outputs
 tests/                  API tests
