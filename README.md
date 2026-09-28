@@ -226,7 +226,7 @@ python -m pip install -r requirements-test.txt
 python -m unittest discover -s tests -v
 ```
 
-Four tests cover invalid inputs, response structure, confidence validation and missing-model behavior. Controlled test doubles isolate the API contract; CI is not model-quality evaluation. Separate real-model evidence appears in Results.
+Five tests cover invalid inputs, response structure, confidence validation, missing-model behavior and dataset-validation logic. Controlled test doubles isolate the API contract; CI is not model-quality evaluation. Separate real-model evidence appears in Results.
 
 | Problem | Check |
 |---|---|
@@ -246,7 +246,8 @@ templates/index.html    Browser UI
 docs/                   Model card, inference evidence and training history
 models/                 Local ignored weights
 runs/                   Ignored generated outputs
-tests/                  API tests
+research/               GPU-training and dataset-QA utilities
+tests/                  API and dataset-validation tests
 .github/workflows/      Lightweight CI
 ```
 
