@@ -17,6 +17,7 @@ The saved `args.yaml` for that run records:
 
 - starting model: `yolo11n.pt`;
 - dataset path: `/content/fire-and-smoke-detection-2/data.yaml`;
+- notebook acquisition record: Roboflow workspace `middle-east-tech-university`, project `fire-and-smoke-detection-hiwia`, version 2;
 - 50 epochs;
 - batch size 16;
 - image size 640;
@@ -24,7 +25,7 @@ The saved `args.yaml` for that run records:
 - seed 0 with deterministic mode enabled;
 - validation enabled.
 
-This establishes the checkpoint-to-run link. It does **not** by itself establish the complete upstream dataset manifest, split provenance or redistribution rights, because that historical dataset is not republished in this repository.
+The same notebook log shows this run executing on **NVIDIA A100-SXM4-40GB (40,507 MiB)** with PyTorch 2.6.0 + CUDA 12.4. This establishes the checkpoint-to-run and run-to-compute links. It does **not** by itself establish the complete upstream dataset manifest, image-level attribution or redistribution rights, because that historical dataset is not republished in this repository.
 
 ## Limitations
 
