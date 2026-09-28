@@ -67,6 +67,9 @@ def train(args: argparse.Namespace) -> None:
         cache=args.cache,
         rect=args.rect,
         resume=args.resume,
+        amp=True,
+        seed=0,
+        deterministic=True,
         device=args.device,
     )
 
