@@ -1,0 +1,9 @@
+ultralytics==8.3.15
+torch==2.8.0
+torchvision==0.23.0
+numpy==1.24.3
+opencv-python==4.8.1.78
+Pillow==10.1.0
+fastapi==0.136.3
+uvicorn==0.48.0
+httpx==0.28.1
