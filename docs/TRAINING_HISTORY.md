@@ -22,7 +22,7 @@ Historical project artifacts include experiments with:
 
 Training records include 640-pixel image size runs, mixed-precision training, transfer/retraining experiments and saved Ultralytics artifacts such as `results.csv`, confusion matrices, PR/F1 curves and model weights.
 
-A separate training script from the project history used 100 epochs, batch size 8, SGD, warmup, augmentation controls, resume training and `device=0` for GPU execution.
+Recorded runs used combinations of 100 epochs, SGD, warmup, geometric/color augmentation and `device=0` on CUDA hardware. Exact batch size, learning rate and resume behavior varied by run; the saved `args.yaml` should be treated as the source of truth for any specific result.
 
 ## Dataset quality work
 
@@ -33,11 +33,26 @@ Historical notebooks and reports include checks for:
 - image/annotation consistency;
 - training/validation/test dataset preparation.
 
-These checks were part of preparing the fire/smoke detection data for model experimentation.
+The cleaned public utility in [../research/dataset_validation.py](../research/dataset_validation.py) preserves those checks without publishing private data or credentials.
 
-## Example historical run
+## Example historical runs
 
-One recorded **YOLOv12L** experiment completed 100 epochs with the following final-epoch validation metrics:
+### YOLO11L run on a fire/smoke dataset path
+
+A recorded YOLO11L run points to `/content/fire-and-smoke-detection-2/data.yaml` and used 100 epochs, batch size 8, image size 640, SGD, AMP and CUDA device 0. Its final recorded validation row was:
+
+| Metric | Value |
+|---|---:|
+| Precision | 0.6134 |
+| Recall | 0.5901 |
+| mAP@0.50 | 0.5994 |
+| mAP@0.50:0.95 | 0.2584 |
+
+The underlying dataset is not republished here, so these values are historical experiment evidence rather than a reproducible public benchmark.
+
+### YOLOv12L run on the J.A.M. four-class dataset
+
+A different recorded YOLOv12L run used the historical **J.A.M. Busqueda – Prototype 1** dataset. Its YAML names **fire, human, object and vehicle**; it is therefore not a fire/smoke-only benchmark. The final recorded validation row was:
 
 | Metric | Value |
 |---|---:|
@@ -46,7 +61,7 @@ One recorded **YOLOv12L** experiment completed 100 epochs with the following fin
 | mAP@0.50 | 0.9009 |
 | mAP@0.50:0.95 | 0.6369 |
 
-These values belong to that specific historical training run and are **not** claimed as the performance of the checkpoint currently served by the application. Reproducing or publishing a model benchmark requires the exact dataset/split manifest, checkpoint linkage and independent evaluation.
+These metrics belong to that specific four-class historical run and must not be attributed to the served fire/smoke checkpoint.
 
 ## Current repository scope
 
