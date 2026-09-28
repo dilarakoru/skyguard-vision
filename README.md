@@ -27,7 +27,7 @@ The supported public workflow is **single-image inspection on CPU**. Historical 
 | Validated runtime | Ultralytics 8.3.15; CPU |
 | SHA-256 | `4071eda4c380e04be1e2000fded0ca96d7d8371587c7680ce4bd177ea4b9f904` |
 
-The checkpoint is an existing research artifact. A complete training manifest, split history and benchmark evaluation have not been conclusively linked to it. Its local filename alone does not verify all training details. See [MODEL_CARD.md](docs/MODEL_CARD.md).
+The checkpoint hash and byte size exactly match the historical `fire_detection_yolo11/weights/best.pt` artifact. Its saved run configuration records a YOLO11n 50-epoch, batch-16, 640-pixel training run with AMP on a fire-and-smoke dataset path. The checkpoint-to-run link is established, while the complete upstream dataset manifest, split provenance and redistribution rights remain incomplete. See [MODEL_CARD.md](docs/MODEL_CARD.md).
 
 **Weights and sample images are not tracked.** The original local development environment included a model/sample; a fresh GitHub clone requires an authorized compatible checkpoint and your own image. The application never silently downloads or substitutes an unrelated detector.
 
